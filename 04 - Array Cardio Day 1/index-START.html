@@ -72,17 +72,24 @@
         return a.last
                 .localeCompare(b.last);
       });
-      console.table(inventorsSortedAlphabetically);
+      console.log(inventorsSortedAlphabetically);
 
       const peopleSortedAlphabetically = people.sort((a, b) => {
         return a.localeCompare(b);
       });
       console.table(peopleSortedAlphabetically);
 
-
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const countData = data.reduce((object, transportation) => {
+      if (!object[transportation]) {
+        object[transportation] = 0;
+      }
+      object[transportation]++;
+      return object;
+    }, {});
+    console.log(countData);
 
   </script>
 </body>
