@@ -90,6 +90,7 @@
 
     .panel.open {
       font-size:40px;
+      flex: 5;
     }
 
   </style>
@@ -124,10 +125,24 @@
   </div>
 
   <script>
-    panel = document.querySelector('.panel')
-    panel.addEventListener('.click', (event) => {
-      console.log(event);
-    });
+    panels = document.querySelectorAll('.panel')
+
+    function toggleOpen() {
+      // panels.forEach((panel) => {
+      //   panel.classList.remove('open-active');
+      //   panel.classList.remove('open');
+      // });
+      this.classList.toggle('open');
+    }
+
+    function toggleActive(event) {
+      if (event.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      };
+    };
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
   </script>
 
 
